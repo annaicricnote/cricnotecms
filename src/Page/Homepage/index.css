@@ -1,0 +1,5 @@
+.content-recent-news{
+  overflow: hidden;
+  text-overflow: clip;
+  height: 85px;
+}
