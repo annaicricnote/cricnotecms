@@ -20,9 +20,9 @@ function Homepage() {
         dispatch(slotpic("hi hi"))
 
     }, [])
-    console.log(headget)
-        
 
+        
+    console.log(headget?.data)
     return (
         <>
 
