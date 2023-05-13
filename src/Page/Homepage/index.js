@@ -47,40 +47,7 @@ function Homepage() {
                                        </div>
                                    </div>
                                </div>
-                        })}
-               
-
-                        {/* <div className="_2-slot">
-                            <div className="masonry-box post-media">
-                                <img src="upload/tech_02.jpg" alt="" />
-                                <div className="shadoweffect">
-                                    <div className="shadow-desc">
-                                        <div className="blog-meta">
-                                            <span className="bg-orange"><a href="tech-category-01.html" title="">Gadgets</a></span>
-                                            <h4><a href="tech-single.html" title="">Do not make mistakes when choosing web hosting</a></h4>
-                                            <small><a href="tech-single.html" title="">03 July, 2017</a></small>
-                                            <small><a href="tech-author.html" title="">by Jessica</a></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="_3-slot">
-                            <div className="masonry-box post-media">
-                                <img src="upload/tech_03.jpg" alt="" />
-                                <div className="shadoweffect">
-                                    <div className="shadow-desc">
-                                        <div className="blog-meta">
-                                            <span className="bg-orange"><a href="tech-category-01.html" title="">Technology</a></span>
-                                            <h4><a href="tech-single.html" title="">The most reliable Galaxy Note 8 images leaked</a></h4>
-                                            <small><a href="tech-single.html" title="">01 July, 2017</a></small>
-                                            <small><a href="tech-author.html" title="">by Jessica</a></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
+                        })}               
                     </div>
                 </div>
             </section>
