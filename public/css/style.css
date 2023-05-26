@@ -274,10 +274,14 @@ a {
   left: 0;
   right: 0;
   width: 100%;
+  display: none;
 }
 
 .dropdown-menu .dropdown-menu {
   margin-top: -1px !important
+}
+ .dropdown-toggle ul :hover{
+  display: black;
 }
 
 .mega-menu-content {
@@ -564,7 +568,9 @@ div.tab button:hover {
 .masonry-box {
   width: 100%;
 }
-
+.first-section .masonry-box img, .first-section .masonry-box{
+ height: 415px;
+}
 .masonry-box {
   border: 0.34rem solid #fff;
 }
@@ -598,7 +604,7 @@ div.tab button:hover {
 }
 
 .footer {
-  padding: 4rem 0 4rem;
+  padding: 30px 30px;
   background: url("./images/footer.png") repeat-x center bottom #edeff2;
 }
 
@@ -901,6 +907,7 @@ div.tab button:hover {
 .post-sharing span,
 .post-sharing li {
   display: inline-block !important;
+  padding-inline: 10px;
 }
 
 .single-post-media {
@@ -1156,10 +1163,14 @@ hr.invis3 {
   border: 0;
   margin: 0;
 }
-
+.first-section .post-media {
+  object-fit: cover;
+  height: 415px;
+}
 .post-media {
   position: relative;
   overflow: hidden;
+
 }
 
 .shadoweffect {
@@ -1498,7 +1509,7 @@ hr.invis3 {
 
 .newsletter-widget .form-inline .form-control {
   background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid #dbdde0;
+    height: 50px;
   border-radius: 0;
   box-shadow: none;
   display: inline-block;
@@ -1509,6 +1520,7 @@ hr.invis3 {
   letter-spacing: 0.3px;
   vertical-align: middle;
   width: 400px;
+
 }
 
 .card-block {
@@ -1620,6 +1632,7 @@ hr.invis3 {
   padding: 0.8rem 2rem;
   text-transform: none;
 }
+
 
 .link-widget li {
   padding: 0.4rem 0.2rem 0.6rem;

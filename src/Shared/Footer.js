@@ -11,7 +11,7 @@ function Footer() {
                         <div className="widget">
                             <div className="footer-text text-left">
                                 <a href="index.html">Cricnote</a>
-                                <p>Tech Blog is a cricket blog, we sharing score, news and gadget articles.</p>
+                                <p>Cricnote is a cricket blog, we sharing score, news and gadget articles.</p>
                                 <div className="social">
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i className="fa fa-facebook"></i></a>              
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i className="fa fa-twitter"></i></a>
@@ -32,31 +32,13 @@ function Footer() {
                         </div>
                     </div>
 
-                    <div className="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                        <div className="widget">
-                            <h2 className="widget-title">Popular Categories</h2>
-                            <div className="link-widget">
-                                <ul>
-                                    <li><a href="#">Marketing <span>(21)</span></a></li>
-                                    <li><a href="#">SEO Service <span>(15)</span></a></li>
-                                    <li><a href="#">Digital Agency <span>(31)</span></a></li>
-                                    <li><a href="#">Make Money <span>(22)</span></a></li>
-                                    <li><a href="#">Blogging <span>(66)</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
 
                     <div className="col-lg-2 col-md-12 col-sm-12 col-xs-12">
                         <div className="widget">
-                            <h2 className="widget-title">Copyrights</h2>
                             <div className="link-widget">
                                 <ul>
-                                    <li><a href="#">About us</a></li>
-                                    <li><a href="#">Advertising</a></li>
-                                    <li><a href="#">Write for us</a></li>
-                                    <li><a href="#">Trademark</a></li>
-                                    <li><a href="#">License & Help</a></li>
+                                    <li><a href="/">About us</a></li>
+                                    <li><a href="/contact">Contact Us</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -3108,8 +3108,12 @@ input[type="button"].btn-block {
 }
 
 .collapse {
-  display: none;
+   display: none ; 
 }
+.navbar-toggler-icon .collapse {
+  display: block;
+}
+
 
 .collapse.show {
   display: block;

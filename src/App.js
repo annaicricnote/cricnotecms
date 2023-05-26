@@ -3,14 +3,20 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Homepage from './Page/Homepage';
 import Header from "./Shared/Heater"
 import Footer from "./Shared/Footer"
-
+import Detailes from './Page/Detailes';
+import Contactus from './Page/Contactus';
+import Pagenotfount from './Page/Pagenotfount';
 function App() {
   return (
     <>
       <Header/>    
        <BrowserRouter basename="/">
        <Routes>
-        <Route path='/' element={<Homepage/>}></Route>
+        <Route exact path='/' element={<Homepage/>}></Route>
+        
+        <Route path='/contact' element={<Contactus/>}></Route>
+        <Route path='/news/:detailes' element={<Detailes/>}></Route>
+        <Route path='*' element={<Pagenotfount/>}></Route>
        </Routes>
        </BrowserRouter>
        <Footer/>
@@ -19,3 +25,56 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

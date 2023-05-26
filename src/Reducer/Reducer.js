@@ -8,7 +8,8 @@ export const loginslice = createSlice({
   initialState: {
       recentnews:[],
       trendvideos:[],
-      slotpic:[]
+      slotpic:[],
+      categories:[]
       
   },
   reducers: {
@@ -24,13 +25,17 @@ export const loginslice = createSlice({
     setSlot: (state, action) => {
     
       state.slotpic =  action.payload;
+},
+setCategories: (state, action) => {
+    
+  state.categories =  action.payload;
 }
   }
 })
 export const { setPost } = loginslice.actions
 export const { setVideo } = loginslice.actions
 export const { setSlot } = loginslice.actions
-
+export const{ setCategories } = loginslice.actions
 
 export const getRecentNews = (details) => (dispatch) => {
 
@@ -69,6 +74,23 @@ export const slotpic = (details) => (dispatch) => {
   .then(function (response) {
     // handle success
     dispatch(setSlot(response))    
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .finally(function () {
+    // always executed
+  });
+}
+
+
+export const categories = (details) => (dispatch) => {
+
+  axios.get(api.categories)
+  .then(function (response) {
+    // handle success
+    dispatch(setCategories(response))    
   })
   .catch(function (error) {
     // handle error

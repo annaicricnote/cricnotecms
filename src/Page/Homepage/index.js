@@ -8,21 +8,29 @@ import Trendvideos from "../../Shared/Trendvideos"
 import Popularposts from "../../Shared/Popularposts"
 import Recentreviews from "../../Shared/Recentreviews"
 import Followus from "../../Shared/Followus"
+import { useNavigate } from "react-router-dom";
+import image from "../../images/images/add.png"
 import "./index.css"
 function Homepage() {
+    
+    const nav =useNavigate()
     const dispatch = useDispatch()
     const postget = useSelector((state) => state.cricnoteinfo.recentnews)
 
       const headget = useSelector((state) => state.cricnoteinfo.slotpic)
 
     useEffect(() => {
-        dispatch(getRecentNews("hi hi"))
-        dispatch(slotpic("hi hi"))
+        dispatch(getRecentNews())
+        dispatch(slotpic())
+    
+
 
     }, [])
-
-        
-    console.log(headget?.data)
+    const titleclick =(item,e)=>{
+        e.preventDefault()
+        nav(`/news/${item.title.rendered}` , {state:{item}})
+    } 
+    // console.log(headget?.data)
     return (
         <>
 
@@ -38,10 +46,10 @@ function Homepage() {
                                        <div className="shadoweffect">
                                            <div className="shadow-desc">
                                                <div className="blog-meta">
-                                                   <span className="bg-orange"><a href="tech-category-01.html" title="">{item.title.rendered}</a></span>
-                                                   <h4><a href="tech-single.html" title="" dangerouslySetInnerHTML={{ __html: item.content.rendered }}></a></h4>
-                                                   <small><a href="tech-single.html" title="">24 July, 2017</a></small>
-                                                   <small><a href="tech-author.html" title="">by Amanda</a></small>
+                                                   <span className="bg-orange"><a href="#" title="" onClick={(e)=>titleclick(item,e)}>{item.title.rendered}</a></span>
+                                                   <h4><a href="#" title="" dangerouslySetInnerHTML={{ __html: item.content.rendered }}></a></h4>
+                                                   <small><a href="#" title="">{item.modified}</a></small>
+                                                   <small><a href="#" title="">by Amanda</a></small>
                                                </div>
                                            </div>
                                        </div>
@@ -67,7 +75,7 @@ function Homepage() {
                                             <div className="blog-box row">
                                                 <div className="col-md-4">
                                                     <div className="post-media">
-                                                        <a href="tech-single.html" title="">
+                                                        <a onClick={(e)=>titleclick(item,e)} href="#"  title="">
                                                             <img src={item?.better_featured_image?.source_url} alt="" />
                                                             <div className="hovereffect"></div>
                                                         </a>
@@ -75,12 +83,12 @@ function Homepage() {
                                                 </div>
 
                                                 <div className="blog-meta big-meta col-md-8">
-                                                    <h4><a href="tech-single.html" title="" dangerouslySetInnerHTML={{ __html: item.title.rendered }}/></h4>
+                                                    <h4><a onClick={(e)=>titleclick(item,e)} href="#" title="" dangerouslySetInnerHTML={{ __html: item.title.rendered }}/></h4>
                                                     <div className="content-recent-news" dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
                                                     <small className="firstsmall"><a className="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>
-                                                    <small><a href="tech-single.html" title="">{item.modified}</a></small>
-                                                    <small><a href="tech-author.html" title="">by Matilda</a></small>
-                                                    <small><a href="tech-single.html" title=""><i className="fa fa-eye"></i> 1114</a></small>
+                                                    <small><a onClick={(e)=>titleclick(item,e)} href="#" title="">{item.modified}</a></small>
+                                                    <small><a onClick={(e)=>titleclick(item,e)} href="#" title="">by Matilda</a></small>
+                                                    <small><a onClick={(e)=>titleclick(item,e)} href="#" title=""><i className="fa fa-eye"></i> 1114</a></small>
                                                 </div>
                                             </div>
                                         </div> <hr className="invis" /> </>
@@ -112,21 +120,21 @@ function Homepage() {
                                 <div className="widget">
                                     <div className="banner-spot clearfix">
                                         <div className="banner-img">
-                                            <img src="upload/banner_07.jpg" alt="" />
+                                            <img src={image} alt="" />
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Trend videos*/}
-                                <Trendvideos />
+                                {/* Trendvideos*/}
+                                <Trendvideos/>
                                 {/* Popularposts */}
-                                <Popularposts />
+                                <Popularposts/>
 
                                 {/* Recentreviews */}
-                                <Recentreviews />
+                                <Recentreviews/>
 
                                 {/* Followus */}
-                                <Followus />
+                                <Followus/>
 
                                 <div className="widget">
                                     <div className="banner-spot clearfix">

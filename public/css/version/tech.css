@@ -66,16 +66,10 @@ h5 {
   font-size: 21px !important;
   padding: 0.6rem 0.6rem 0 !important;
 }
-
-._1-slot {
-  float: left;
-  width: 50%;
-}
-
-._3-slot,
+._1-slot,._3-slot,
 ._2-slot {
   float: left;
-  width: 25%;
+  width: 33.3%;
 }
 
 ._1-slot .blog-meta h4 {
@@ -86,6 +80,8 @@ h5 {
 .first-section .blog-meta h4 {
   font-weight: 600;
   padding: 0.8rem 0 0.5rem !important;
+  overflow: hidden;
+  height: 95px;
 }
 
 .blog-meta.big-meta h4 {
@@ -97,7 +93,7 @@ h5 {
 }
 
 .first-section {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .blog-grid-system .color-orange {
@@ -316,8 +312,16 @@ a:focus {
 }
 
 @media (max-width: 980px) {
+  .first-section .post-media { 
+    height: auto;
+  }
+  
+.first-section .masonry-box img, .first-section .masonry-box{
+  height: auto;
+ }
   .first-section .blog-meta h4 {
       font-size: 16px;
+      height: 45px;
   }
   .shadow-desc {
       padding: 1rem 0.5rem;

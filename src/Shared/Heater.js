@@ -1,41 +1,105 @@
-
+import React from "react";
+import { useSelector } from 'react-redux';
+import { categories } from "../Reducer/Reducer";
+import { useDispatch } from 'react-redux'
+import { useState, useEffect } from "react";
 function Heater() {
+    const [currentcat, setCurrentcat] = useState(1)
+    const [collapse, setCollapse] = useState(false)
 
-    const openCategory = () =>{
+    const dispatch = useDispatch()
+    const categoriesget = useSelector((state) => state.cricnoteinfo.categories)
+    const postget = useSelector((state) => state.cricnoteinfo.recentnews)
 
+    useEffect(() => {
+        dispatch(categories())
+
+    }, [])
+
+    const openCategory = (item) => {
+        setCurrentcat(item.id)
+        console.log(item.id)
     }
+
+
+    const getPostBy = (categoryId) => {
+
+        return postget?.data?.filter(function (item, index) {
+            return item.categories[0] === categoryId
+        })
+    }
+
+    const collapseNavClick = () =>{
+        setCollapse(!collapse)
+    }
+
+
+  
     return (
         <>
-            <header className="tech-header header">
+            <header className="tech-header header ">
                 <div className="container-fluid">
                     <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-                        <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <button className="navbar-toggler navbar-toggler-right" onClick={collapseNavClick} type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
-                        <a className="navbar-brand" href="tech-index.html">Cricnote</a>
-                        <div className="collapse navbar-collapse" id="navbarCollapse">
+                        <a className="navbar-brand" href="/">Cricnote</a>
+                        <div className={ collapse ? "show collapse navbar-collapse" : "collapse navbar-collapse"} id="navbarCollapse">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="tech-index.html">Home</a>
+                                    <a className="nav-link" href="">Home</a>
                                 </li>
                                 <li className="nav-item dropdown has-submenu menu-large hidden-md-down hidden-sm-down hidden-xs-down">
-                                    <a className="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                                    <a className="nav-link dropdown-toggle" href="/" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
                                     <ul className="dropdown-menu megamenu" aria-labelledby="dropdown01">
                                         <li>
                                             <div className="container">
                                                 <div className="mega-menu-content clearfix">
                                                     <div className="tab">
-                                                        <button className="tablinks active" onClick={(event)=>openCategory(event, 'cat01')}>Science</button>
-                                                        <button className="tablinks" onClick={(event)=>openCategory(event, 'cat02')}>Technology</button>
-                                                        <button className="tablinks" onClick={(event)=>openCategory(event, 'cat03')}>Social Media</button>
-                                                        <button className="tablinks" onClick={(event)=>openCategory(event, 'cat04')}>Car News</button>
-                                                        <button className="tablinks" onClick={(event)=>openCategory(event, 'cat05')}>Worldwide</button>
+                                                        {categoriesget?.data?.length > 0 && categoriesget?.data.map((item, index) => {
+                                                            console.log(item.name)
+                                                            return <>
+
+                                                                <button key={index} className={index == 0 ? "tablinks active" : "tablinks"} onClick={() => openCategory(item)}>{item.name}</button>
+
+                                                            </>
+                                                        })}
                                                     </div>
 
                                                     <div className="tab-details clearfix">
                                                         <div id="cat01" className="tabcontent active">
                                                             <div className="row">
-                                                                <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+
+                                                                {categoriesget?.data?.length > 0 && categoriesget?.data.map((item, index) => {
+                                                                    return <>
+                                                                        {getPostBy(item.id)?.map((post, index) => {
+                                                                            return <>
+                                                                                {currentcat === item.id ? <>
+                                                                                    <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12"> <div className="blog-box">
+                                                                                        <div className="post-media">
+                                                                                            <a href="tech-single.html" title="">
+                                                                                                <img src={post?.better_featured_image?.source_url} height={"188px"}  alt="" className="img-fluid" />
+                                                                                                <div className="hovereffect">
+                                                                                                </div>
+                                                                                                <span className="menucat">{item.name}</span>
+                                                                                            </a>
+                                                                                        </div>
+                                                                                        <div className="blog-meta">
+                                                                                            <h4><a href="tech-single.html" title="" height={"10px"} >{post.title.rendered}</a></h4>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    </div>
+
+                                                                                </> : null}
+                                                                            </>
+                                                                        })}
+                                                                    </>
+
+
+
+                                                                    //newcate.map()
+                                                                })}
+                                                                {/* <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                                     <div className="blog-box">
                                                                         <div className="post-media">
                                                                             <a href="tech-single.html" title="">
@@ -49,55 +113,8 @@ function Heater() {
                                                                             <h4><a href="tech-single.html" title="">Top 10+ care advice for your toenails</a></h4>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                </div> */}
 
-                                                                <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                    <div className="blog-box">
-                                                                        <div className="post-media">
-                                                                            <a href="tech-single.html" title="">
-                                                                            <img src="upload/tech_menu_02.jpg" alt="" className="img-fluid"/>
-                                                                                <div className="hovereffect">
-                                                                                </div>
-                                                                                <span className="menucat">Science</span>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div className="blog-meta">
-                                                                            <h4><a href="tech-single.html" title="">The secret of your beauty is handmade soap</a></h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                    <div className="blog-box">
-                                                                        <div className="post-media">
-                                                                            <a href="tech-single.html" title="">
-                                                                            <img src="upload/tech_menu_03.jpg" alt="" className="img-fluid"/>
-                                                                                <div className="hovereffect">
-                                                                                </div>
-                                                                                <span className="menucat">Science</span>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div className="blog-meta">
-                                                                            <h4><a href="tech-single.html" title="">Benefits of face mask made from mud</a></h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                                                                    <div className="blog-box">
-                                                                        <div className="post-media">
-                                                                            <a href="tech-single.html" title="">
-                                                                                <img src="upload/tech_menu_04.jpg" alt="" />
-                                                                                <div className="hovereffect">
-                                                                                </div>
-                                                                                <span className="menucat">Science</span>
-                                                                            </a>
-                                                                        </div>
-                                                                        <div className="blog-meta">
-                                                                            <h4><a href="tech-single.html" title="">Relax with the unique warmth of candle flavor</a></h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div id="cat02" className="tabcontent">
@@ -374,17 +391,17 @@ function Heater() {
                                         </li>
                                     </ul>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <a className="nav-link" href="tech-category-01.html">Gadgets</a>
-                                </li>
+                                </li> */}
                                 <li className="nav-item">
-                                    <a className="nav-link" href="tech-category-02.html">Videos</a>
+                                    <a className="nav-link" href="videos">Videos</a>
                                 </li>
-                                <li className="nav-item">
+                                {/* <li className="nav-item">
                                     <a className="nav-link" href="tech-category-03.html">Reviews</a>
-                                </li>
+                                </li> */}
                                 <li className="nav-item">
-                                    <a className="nav-link" href="tech-contact.html">Contact Us</a>
+                                    <a className="nav-link" href="contact">Contact Us</a>
                                 </li>
                             </ul>
                             <ul className="navbar-nav mr-2">

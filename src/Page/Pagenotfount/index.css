@@ -1,0 +1,16 @@
+
+.page-not-found{
+    text-align: center;
+    padding: 30px;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-not-found h1{
+    font-size: 100px;
+    margin-bottom: 30px;
+}
+.page-not-found h1 span{
+  color:#00b2e5 ;
+}
