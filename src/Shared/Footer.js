@@ -11,7 +11,7 @@ function Footer() {
                         <div className="widget">
                             <div className="footer-text text-left">
                                 <a href="index.html">Cricnote</a>
-                                <p>Cricnote is a cricket blog, we sharing score, news and gadget articles.</p>
+                                <p>Cricnote is live  platform for local and international cricket scoring and latest cricket news...</p>
                                 <div className="social">
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i className="fa fa-facebook"></i></a>              
                                     <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i className="fa fa-twitter"></i></a>

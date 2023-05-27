@@ -434,6 +434,9 @@ figure {
 img {
   vertical-align: middle;
 }
+.navbar-brand img{
+  height: 54px;
+}
 
 [role="button"] {
   cursor: pointer;
