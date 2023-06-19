@@ -23,9 +23,9 @@ function Footer() {
                                 <a href="index.html">Cricnote</a>
                                 <p>Cricnote is live  platform for local and international cricket scoring and latest cricket news...</p>
                                 <div className="social">
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i className="fa fa-facebook"> </i></a>              
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i className="fa fa-twitter"></i></a>
-                                    <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i className="fa fa-instagram"></i></a>
+                                    <a href="https://www.facebook.com/profile.php?id=100093977225980" target="_blank"  data-toggle="tooltip" data-placement="bottom" title="Facebook"><i className="fa fa-facebook"> </i></a>              
+                                    <a href="https://twitter.com/_cricnote" data-toggle="tooltip" target="_blank"  data-placement="bottom" title="Twitter"><i className="fa fa-twitter"></i></a>
+                                    <a href="https://www.instagram.com/_cricnote/" data-toggle="tooltip" data-placement="bottom" target="_blank"  title="Instagram"><i className="fa fa-instagram"></i></a>
                                     {/* <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google Plus"><i className="fa fa-google-plus"></i></a> */}
                                     {/* <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i className="fa fa-pinterest"></i></a> */}
                                 </div>
