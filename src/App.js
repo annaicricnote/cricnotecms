@@ -15,7 +15,7 @@ function App() {
         <Route exact path='/' element={<Homepage/>}></Route>
         
         <Route path='/contact' element={<Contactus/>}></Route>
-        <Route path='/news/:detailes' element={<Detailes/>}></Route>
+        <Route path='/news/:id/:title' element={<Detailes/>}></Route>
         <Route path='*' element={<Pagenotfount/>}></Route>
        </Routes>
        </BrowserRouter>

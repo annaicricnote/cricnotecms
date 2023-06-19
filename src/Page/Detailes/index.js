@@ -7,12 +7,52 @@ import Followus from "../../Shared/Followus"
 import { useLocation } from "react-router-dom";
 import image from "../../images/images/add.png"
 import "./index.css"
+import { useParams } from 'react-router-dom';
+import { Helmet } from "react-helmet";
+
+import { useSelector } from 'react-redux';
+
+import { useState, useEffect } from "react";
+import {
+    TwitterShareButton,
+    FacebookShareButton,
+    LinkedinIcon,
+    LinkedinShareButton,
+    TwitterIcon,
+    FacebookIcon,
+} from "react-share";
+
 function Detailes() {
+    const postget = useSelector((state) => state.cricnoteinfo.recentnews);
+
     const Locate = useLocation()
-    const { state: {item} } = Locate;
-  
+    const { state } = Locate || {};
+    const { item } = state || {};
+    const { id } = useParams();
+    const [items, setItems] = useState(item)
+    useEffect(() => {
+        if (postget?.data?.length > 0 && (!item || item === undefined)) {
+            const filterdata = postget?.data?.filter((datas, index) => {
+                return datas.id === parseInt(id)
+            })
+            filterdata.length > 0 && setItems(filterdata[0])
+        }
+
+    }, [postget])
+    console.log(postget)
+    const share = "https://www.linkedin.com/in/sureshkumar-a-624a4125a/";
+    const share1 = "http://cricnote.in/news/117/what-tamil-nadu-weatherman-saying"
+    const share2 = "http://cricnote.in/news/117/what-tamil-nadu-weatherman-saying"
     return (
         <>
+            <Helmet>
+                <meta property="og:title" content={items?.title?.rendered} />
+                <meta property="og:url" content={`${window.location.origin}'/'${items?.slug}`} />
+                <meta property="og:image" content={items?.better_featured_image?.source_url} />
+                <meta property="og:type" content="article" />
+                <meta property="og:description" content="Cricnote is live  platform for local and international cricket scoring and latest cricket news." />
+                <meta property="og:locale" content="en_GB" />
+            </Helmet>
             <div id="wrapper">
                 <section class="section single-wrapper">
                     <div class="container">
@@ -22,44 +62,60 @@ function Detailes() {
                                     <div class="blog-title-area text-center">
                                         <ol class="breadcrumb hidden-xs-down">
                                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                            <li class="breadcrumb-item active">{item?.title?.rendered}</li>
+                                            <li class="breadcrumb-item active">{items?.title?.rendered}</li>
                                         </ol>
 
-                                        <span class="color-orange"><a href="tech-category-01.html" title="">Technology</a></span>
+                                        <span class="color-orange"><a title="">Cricket</a></span>
 
-                                        <h3>{item?.title?.rendered}</h3>
+                                        <h3>{items?.title?.rendered}</h3>
 
                                         <div class="blog-meta big-meta">
-                                            <small><a href="tech-single.html" title="">21 July, 2017</a></small>
-                                            <small><p >by Jessica</p></small>
-                                            <small><p><i class="fa fa-eye"></i> 2344</p></small>
+                                            <small><a title="">21 July, 2017</a></small>
                                         </div>
 
                                         <div class="post-sharing">
-                                            <ul class="list-inline">
-                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                            </ul>
+                                            {/* {postget?.data?.length > 0 && postget?.data?.map((item, index) => { */}
+                                            <FacebookShareButton title="gfyfyfgygfy" discription="sssssssssssss" url={share2}>
+                                                <FacebookIcon size={60} round={true}></FacebookIcon>
+                                            </FacebookShareButton>
+                                            {/* <ul class="list-inline">
+
+                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span>
+
+                                                </a></li>
+                                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span>
+
+                                                    <LinkedinShareButton url={share}>
+                                                        <LinkedinIcon size={50} round={true}></LinkedinIcon>
+                                                    </LinkedinShareButton>
+                                                </a></li>
+                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i>
+
+                                                </a></li>
+
+                                            </ul> */}
+
+                                            {/* })} */}
+
                                         </div>
                                     </div>
 
                                     <div class="single-post-media"> {/*Feature image */}
-                                         <img src={item?.better_featured_image?.source_url} alt=""/>
+                                        <img src={items?.better_featured_image?.source_url} alt="" />
                                     </div>
 
-                                    <div class="blog-content" dangerouslySetInnerHTML={{ __html: item?.content?.rendered }}/> {/*post blog content */}
-                                     
-                                    
+                                    <div class="blog-content" dangerouslySetInnerHTML={{ __html: items?.content?.rendered }} /> {/*post blog content */}
+
+
 
                                     <div class="blog-title-area">
-                                        <div class="tag-cloud-single">
+                                        {/* <div class="tag-cloud-single">
                                             <span>Tags</span>
                                             <small><a href="#" title="">lifestyle</a></small>
                                             <small><a href="#" title="">colorful</a></small>
                                             <small><a href="#" title="">trending</a></small>
                                             <small><a href="#" title="">another tag</a></small>
-                                        </div>
+                                        </div> */}
 
                                         <div class="post-sharing">
                                             <ul class="list-inline">
@@ -80,7 +136,7 @@ function Detailes() {
                                         </div>
                                     </div>
 
-                                    <hr class="invis1" />
+                                    {/* <hr class="invis1" />
 
                                     <div class="custombox prevnextpost clearfix">
                                         <div class="row">
@@ -138,11 +194,11 @@ function Detailes() {
 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <hr class="invis1" />
 
-                                    <div class="custombox clearfix">
+                                    {/* <div class="custombox clearfix">
                                         <h4 class="small-title">You may also like</h4>
                                         <div class="row">
                                             <div class="col-lg-6">
@@ -181,9 +237,9 @@ function Detailes() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
-                                    <hr class="invis1" />
+                                    {/* <hr class="invis1" />
 
                                     <div class="custombox clearfix">
                                         <h4 class="small-title">3 Comments</h4>
@@ -228,7 +284,7 @@ function Detailes() {
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <hr class="invis1" />
 
@@ -259,16 +315,16 @@ function Detailes() {
                                         </div>
                                     </div>
 
-                                      {/* Trend videos*/}
-                                <Trendvideos />
-                                {/* Popularposts */}
-                                <Popularposts />
+                                    {/* Trend videos*/}
+                                    <Trendvideos />
+                                    {/* Popularposts */}
+                                    <Popularposts />
 
-                                {/* Recentreviews */}
-                                <Recentreviews />
+                                    {/* Recentreviews */}
+                                    <Recentreviews />
 
-                                {/* Followus */}
-                                <Followus />
+                                    {/* Followus */}
+                                    <Followus />
                                 </div>
                             </div>
                         </div>
