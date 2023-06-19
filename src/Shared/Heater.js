@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from 'react-redux';
 import { categories } from "../Reducer/Reducer";
-import { useDispatch } from 'react-redux'
-import { useState, useEffect } from "react";
 import { getRecentNews } from "../Reducer/Reducer";
 import { slotpic } from "../Reducer/Reducer";
+import { useDispatch } from 'react-redux'
+import { useState, useEffect } from "react";
+
 import { useNavigate } from "react-router-dom";
 import { customdecodeURIComponent } from "../Shared/helper"
 

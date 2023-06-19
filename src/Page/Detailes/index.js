@@ -9,10 +9,12 @@ import image from "../../images/images/add.png"
 import "./index.css"
 import { useParams } from 'react-router-dom';
 import { Helmet } from "react-helmet";
-
+import { categories } from "../../Reducer/Reducer";
+import { getRecentNews } from "../../Reducer/Reducer";
+import { slotpic } from "../../Reducer/Reducer";
 import { useSelector } from 'react-redux';
-
 import { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux'
 import {
     TwitterShareButton,
     FacebookShareButton,
@@ -23,23 +25,23 @@ import {
 } from "react-share";
 
 function Detailes() {
+    
     const postget = useSelector((state) => state.cricnoteinfo.recentnews);
-
+    const dispatch = useDispatch()
     const Locate = useLocation()
     const { state } = Locate || {};
     const { item } = state || {};
     const { id } = useParams();
     const [items, setItems] = useState(item)
     useEffect(() => {      
-        if (postget?.data?.length > 0 && (!item || item === undefined)) {
+        if (postget && postget?.data?.length > 0 && (!item || item === undefined)) {
             const filterdata = postget?.data?.filter((datas, index) => {
                 return datas.id === parseInt(id)
             })
             filterdata.length > 0 && setItems(filterdata[0])
         }
+    }, [id,postget])
 
-    }, [id])
- 
     const share = "https://www.linkedin.com/in/sureshkumar-a-624a4125a/";
     const share1 = "http://cricnote.in/news/117/what-tamil-nadu-weatherman-saying"
     const share2 = "http://cricnote.in/news/117/what-tamil-nadu-weatherman-saying"
@@ -50,7 +52,7 @@ function Detailes() {
                 <meta property="og:url" content={`${window.location.origin}'/'${items?.slug}`} />
                 <meta property="og:image" content={items?.better_featured_image?.source_url} />
                 <meta property="og:type" content="article" />
-                <meta property="og:description" content="Cricnote is live  platform for local and international cricket scoring and latest cricket news." />
+                <meta property="og:description" content={items?.content?.rendered} />
                 <meta property="og:locale" content="en_GB" />
             </Helmet>
             <div id="wrapper">
