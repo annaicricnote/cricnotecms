@@ -1,8 +1,6 @@
 
-import { getRecentNews } from "../../Reducer/Reducer";
-import { slotpic } from "../../Reducer/Reducer";
+
 import { useDispatch } from 'react-redux'
-import { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import Trendvideos from "../../Shared/Trendvideos"
 import Popularposts from "../../Shared/Popularposts"
@@ -10,25 +8,21 @@ import Recentreviews from "../../Shared/Recentreviews"
 import Followus from "../../Shared/Followus"
 import { useNavigate } from "react-router-dom";
 import image from "../../images/images/add.png"
+import { customdecodeURIComponent } from "../../Shared/helper"
 import "./index.css"
 function Homepage() {
     
     const nav =useNavigate()
     const dispatch = useDispatch()
     const postget = useSelector((state) => state.cricnoteinfo.recentnews)
-
-      const headget = useSelector((state) => state.cricnoteinfo.slotpic)
-
-    useEffect(() => {
-        dispatch(getRecentNews())
-        dispatch(slotpic())
-    
+    const headget = useSelector((state) => state.cricnoteinfo.slotpic)
 
 
-    }, [])
     const titleclick =(item,e)=>{
-        e.preventDefault()
-        nav(`/news/${item.title.rendered}` , {state:{item}})
+        e.preventDefault();
+        console.log(item)
+        let decoded = customdecodeURIComponent(item.slug);        
+        nav(`/news/${item.id}/${decoded}` , {state:{item}})
     } 
     // console.log(headget?.data)
     return (
@@ -49,7 +43,7 @@ function Homepage() {
                                                    <span className="bg-orange"><a href="#" title="" onClick={(e)=>titleclick(item,e)}>{item.title.rendered}</a></span>
                                                    <h4><a href="#" title="" dangerouslySetInnerHTML={{ __html: item.content.rendered }}></a></h4>
                                                    <small><a href="#" title="">{item.modified}</a></small>
-                                                   <small><a href="#" title="">by Amanda</a></small>
+                                                   <small><a href="#" title="">by Suresh</a></small>
                                                </div>
                                            </div>
                                        </div>
@@ -71,6 +65,7 @@ function Homepage() {
                                 <div className="blog-list clearfix">
 
                                     {postget && postget?.data?.length > 0 && postget?.data?.map((item, index) => {
+                                        console.log(item)
                                         return <> <div key={index} >
                                             <div className="blog-box row">
                                                 <div className="col-md-4">
@@ -85,10 +80,9 @@ function Homepage() {
                                                 <div className="blog-meta big-meta col-md-8">
                                                     <h4><a onClick={(e)=>titleclick(item,e)} href="#" title="" dangerouslySetInnerHTML={{ __html: item.title.rendered }}/></h4>
                                                     <div className="content-recent-news" dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
-                                                    <small className="firstsmall"><a className="bg-orange" href="tech-category-01.html" title="">Gadgets</a></small>
+                                                    <small className="firstsmall"><a className="bg-orange" href="tech-category-01.html" title="">cricket</a></small>
                                                     <small><a onClick={(e)=>titleclick(item,e)} href="#" title="">{item.modified}</a></small>
-                                                    <small><a onClick={(e)=>titleclick(item,e)} href="#" title="">by Matilda</a></small>
-                                                    <small><a onClick={(e)=>titleclick(item,e)} href="#" title=""><i className="fa fa-eye"></i> 1114</a></small>
+                                                    <small><a onClick={(e)=>titleclick(item,e)} href="#" title="">by Suresh</a></small>                                                 
                                                 </div>
                                             </div>
                                         </div> <hr className="invis" /> </>

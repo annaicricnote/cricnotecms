@@ -5,7 +5,7 @@ function Contactus (){
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <h2><i class="fa fa-envelope-open-o bg-orange"></i> Contact us <small class="hidden-xs-down hidden-sm-down">Nulla felis eros, varius sit amet volutpat non. </small></h2>
+                        <h2><i class="fa fa-envelope-open-o bg-orange"></i> Contact us <small class="hidden-xs-down hidden-sm-down">How Can We Help You?. </small></h2>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
                         <ol class="breadcrumb">
@@ -25,13 +25,11 @@ function Contactus (){
                             <div class="row">
                                 <div class="col-lg-5">
                                     <h4>Who we are</h4>
-                                    <p>Tech Blog is a personal blog for handcrafted, cameramade photography content, fashion styles from independent creatives around the world.</p>
+                                    <p>Cricnote is live  platform for local and international cricket scoring and latest cricket news.</p>
                    
                                     <h4>How we help?</h4>
-                                    <p>Etiam vulputate urna id libero auctor maximus. Nulla dignissim ligula diam, in sollicitudin ligula congue quis turpis dui urna nibhs. </p>
-             
-                                    <h4>Pre-Sale Question</h4>
-                                    <p>Fusce dapibus nunc quis quam tempor vestibulum sit amet consequat enim. Pellentesque blandit hendrerit placerat. Integertis non.</p>
+                                    <p>Register or record your street cricket score with our cricnote app. </p>
+                                              
                                 </div>
                                 <div class="col-lg-7">
                                     <form class="form-wrapper">
