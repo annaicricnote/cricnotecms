@@ -23,9 +23,9 @@ import {
     TwitterIcon,
     FacebookIcon,
 } from "react-share";
-
+import { customdecodeURIComponent } from "../../Shared/helper"
 function Detailes() {
-    
+
     const postget = useSelector((state) => state.cricnoteinfo.recentnews);
     const dispatch = useDispatch()
     const Locate = useLocation()
@@ -33,18 +33,17 @@ function Detailes() {
     const { item } = state || {};
     const { id } = useParams();
     const [items, setItems] = useState(item)
-    useEffect(() => {      
+    useEffect(() => {
         if (postget && postget?.data?.length > 0 && (!item || item === undefined)) {
             const filterdata = postget?.data?.filter((datas, index) => {
                 return datas.id === parseInt(id)
             })
             filterdata.length > 0 && setItems(filterdata[0])
         }
-    }, [id,postget])
+    }, [id, postget])
 
-    const share = "https://www.linkedin.com/in/sureshkumar-a-624a4125a/";
-    const share1 = "http://cricnote.in/news/117/what-tamil-nadu-weatherman-saying"
-    const share2 = "http://cricnote.in/news/117/what-tamil-nadu-weatherman-saying"
+    const link = `${window.location.origin}/news/${items?.id}/${items.title?.rendered}`
+    console.log(link)
     return (
         <>
             <Helmet>
@@ -74,12 +73,29 @@ function Detailes() {
                                         <div class="blog-meta big-meta">
                                             <small><a title="">21 July, 2017</a></small>
                                         </div>
-
+                                        {items?.title?.rendered ?
                                         <div class="post-sharing">
-                                            {/* {postget?.data?.length > 0 && postget?.data?.map((item, index) => { */}
-                                            <FacebookShareButton title="gfyfyfgygfy" discription="sssssssssssss" url={share2}>
-                                                <FacebookIcon size={60} round={true}></FacebookIcon>
+
+                                            <FacebookShareButton
+                                                url={link}
+                                                quote={items?.title?.rendered}
+                                                imageUrl={items?.better_featured_image?.source_url}                                           
+                                                description={items?.content?.rendered}
+                                                className="Demo__some-network__share-button"
+                                            >
+                                                <FacebookIcon size={32} round /> 
                                             </FacebookShareButton>
+                                            <br />
+                                            <TwitterShareButton
+                                                title={items?.title?.rendered}
+                                                url={items?.better_featured_image?.source_url}
+                                                hashtags={["hashtag1", "hashtag2"]}
+                                            >
+                                                <TwitterIcon size={32} round />
+                                                
+                                            </TwitterShareButton>
+
+                                         
                                             {/* <ul class="list-inline">
 
                                                 <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span>
@@ -99,7 +115,7 @@ function Detailes() {
 
                                             {/* })} */}
 
-                                        </div>
+                                        </div> : null}
                                     </div>
 
                                     <div class="single-post-media"> {/*Feature image */}
