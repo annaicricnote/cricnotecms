@@ -9,11 +9,11 @@ import Pagenotfount from './Page/Pagenotfount';
 function App() {
   return (
     <>
-      <Header/>    
+          
        <BrowserRouter basename="/">
+       <Header/>
        <Routes>
         <Route exact path='/' element={<Homepage/>}></Route>
-        
         <Route path='/contact' element={<Contactus/>}></Route>
         <Route path='/news/:id/:title' element={<Detailes/>}></Route>
         <Route path='*' element={<Pagenotfount/>}></Route>

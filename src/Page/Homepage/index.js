@@ -20,11 +20,10 @@ function Homepage() {
 
     const titleclick =(item,e)=>{
         e.preventDefault();
-        console.log(item)
         let decoded = customdecodeURIComponent(item.slug);        
         nav(`/news/${item.id}/${decoded}` , {state:{item}})
     } 
-    // console.log(headget?.data)
+   
     return (
         <>
 
@@ -64,8 +63,7 @@ function Homepage() {
                                 </div>
                                 <div className="blog-list clearfix">
 
-                                    {postget && postget?.data?.length > 0 && postget?.data?.map((item, index) => {
-                                        console.log(item)
+                                    {postget && postget?.data?.length > 0 && postget?.data?.map((item, index) => {                                       
                                         return <> <div key={index} >
                                             <div className="blog-box row">
                                                 <div className="col-md-4">
@@ -133,7 +131,7 @@ function Homepage() {
                                 <div className="widget">
                                     <div className="banner-spot clearfix">
                                         <div className="banner-img">
-                                            <img src="upload/banner_03.jpg" alt="" />
+                                            {/* <img src="upload/banner_03.jpg" alt="" /> */}
                                         </div>
                                     </div>
                                 </div>

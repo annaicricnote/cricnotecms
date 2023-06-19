@@ -5,11 +5,13 @@ import { useDispatch } from 'react-redux'
 import { useState, useEffect } from "react";
 import { getRecentNews } from "../Reducer/Reducer";
 import { slotpic } from "../Reducer/Reducer";
+import { useNavigate } from "react-router-dom";
+import { customdecodeURIComponent } from "../Shared/helper"
 
 function Heater() {
     const [currentcat, setCurrentcat] = useState(1)
     const [collapse, setCollapse] = useState(false)
-
+    const navgations =useNavigate()
     const dispatch = useDispatch()
     const categoriesget = useSelector((state) => state.cricnoteinfo.categories)
     const postget = useSelector((state) => state.cricnoteinfo.recentnews)
@@ -23,7 +25,7 @@ function Heater() {
   
     const openCategory = (item) => {
         setCurrentcat(item.id)
-        console.log(item.id)
+       
     }
 
 
@@ -37,7 +39,12 @@ function Heater() {
     const collapseNavClick = () =>{
         setCollapse(!collapse)
     }
-
+    
+    const titleclick =(post,e)=>{
+        e.preventDefault();      
+        let decoded = customdecodeURIComponent(post.slug);   
+        navgations(`/news/${post.id}/${decoded}` , {state:{post}})
+    } 
 
   
     return (
@@ -78,16 +85,16 @@ function Heater() {
                                                                             return <>
                                                                                 {currentcat === item.id ? <>
                                                                                     <div className="col-lg-3 col-md-6 col-sm-12 col-xs-12"> <div className="blog-box">
-                                                                                        <div className="post-media">
-                                                                                            <a href="tech-single.html" title="">
-                                                                                                <img src={post?.better_featured_image?.source_url} height={"188px"}  alt="" className="img-fluid" />
+                                                                                        <div className="post-media header-catorgy">
+                                                                                            <a href="#"  onClick={(e)=>titleclick(post,e)} title="">
+                                                                                                <img src={post?.better_featured_image?.source_url} height={"150px"}  alt="" className="img-fluid" />
                                                                                                 <div className="hovereffect">
                                                                                                 </div>
                                                                                                 <span className="menucat">{item.name}</span>
                                                                                             </a>
                                                                                         </div>
-                                                                                        <div className="blog-meta">
-                                                                                            <h4><a href="tech-single.html" title="" height={"10px"} >{post.title.rendered}</a></h4>
+                                                                                        <div className="blog-meta header-catorgy-blog" >
+                                                                                            <h4><a href="#"  onClick={(e)=>titleclick(post,e)}title="" height={"10px"} line-height = {"20px"} font-size={"15px"}>{post.title.rendered}</a></h4>
                                                                                         </div>
                                                                                     </div>
                                                                                     </div>

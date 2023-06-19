@@ -320,8 +320,21 @@ a {
 .post-media img {
   width: 100%;
 }
-
-
+.header-catorgy .img-fluid{
+  width: auto;
+  height: 100px;
+}
+.header-catorgy a{
+  text-align: center;
+    display: block;
+}
+.header-catorgy-blog a{
+  overflow: hidden;
+  text-overflow: clip;
+  height: 39px;
+  display: block;
+  margin-bottom: 10px;
+}
 /* Style the tab */
 
 div.tab {

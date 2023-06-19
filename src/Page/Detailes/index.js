@@ -30,7 +30,7 @@ function Detailes() {
     const { item } = state || {};
     const { id } = useParams();
     const [items, setItems] = useState(item)
-    useEffect(() => {
+    useEffect(() => {      
         if (postget?.data?.length > 0 && (!item || item === undefined)) {
             const filterdata = postget?.data?.filter((datas, index) => {
                 return datas.id === parseInt(id)
@@ -38,8 +38,8 @@ function Detailes() {
             filterdata.length > 0 && setItems(filterdata[0])
         }
 
-    }, [postget])
-    console.log(postget)
+    }, [id])
+ 
     const share = "https://www.linkedin.com/in/sureshkumar-a-624a4125a/";
     const share1 = "http://cricnote.in/news/117/what-tamil-nadu-weatherman-saying"
     const share2 = "http://cricnote.in/news/117/what-tamil-nadu-weatherman-saying"
