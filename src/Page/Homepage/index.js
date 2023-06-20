@@ -20,7 +20,7 @@ function Homepage() {
 
     const titleclick =(item,e)=>{
         e.preventDefault();
-        let decoded = customdecodeURIComponent(item.slug);        
+        let decoded = customdecodeURIComponent(item.title.rendered);
         nav(`/news/${item.id}/${decoded}` , {state:{item}})
     } 
    

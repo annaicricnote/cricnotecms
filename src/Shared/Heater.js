@@ -43,7 +43,7 @@ function Heater() {
     
     const titleclick =(post,e)=>{
         e.preventDefault();      
-        let decoded = customdecodeURIComponent(post.slug);   
+        let decoded = customdecodeURIComponent(post.title.rendered);   
         navgations(`/news/${post.id}/${decoded}` , {state:{post}})
     } 
 

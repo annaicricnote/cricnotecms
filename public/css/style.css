@@ -875,10 +875,14 @@ div.tab button:hover {
 }
 
 .post-sharing {
-  display: block;
-  width: 100%;
-  position: relative;
-  margin: 1rem 0 0;
+  display: flex;
+    margin: 1rem 0 0;
+    align-items: center;
+    justify-content: center;
+    margin: 0 30px;
+}
+.post-sharing button{
+  margin: 0 10px;
 }
 
 .gp-button.btn-primary:hover,
