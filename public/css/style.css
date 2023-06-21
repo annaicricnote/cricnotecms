@@ -666,6 +666,8 @@ div.tab button:hover {
   padding: 0;
   margin: 0;
   list-style: none;
+  font-size: 20px;
+  text-align: center
 }
 
 .footer ul li {
@@ -1679,7 +1681,6 @@ hr.invis3 {
 .loader {
   display: block;
   margin: 20px auto 0;
-  vertical-align: middle;
 }
 
 #preloader {
@@ -1716,4 +1717,7 @@ hr.invis3 {
   height: auto;
   max-width: 100%;
   vertical-align: bottom;
+}
+.infinite-scroll-component {
+  overflow: unset !important;
 }

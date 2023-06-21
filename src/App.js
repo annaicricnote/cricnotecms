@@ -6,6 +6,7 @@ import Footer from "./Shared/Footer"
 import Detailes from './Page/Detailes';
 import Contactus from './Page/Contactus';
 import Pagenotfount from './Page/Pagenotfount';
+import PrivacyPolicy from './Page/Privacypolicy';
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
         <Route path='/contact' element={<Contactus/>}></Route>
         <Route path='/news/:id/:title' element={<Detailes/>}></Route>
         <Route path='/news/:id' element={<Detailes/>}></Route>
+        <Route path='/privacy' element={<PrivacyPolicy/>}></Route>
         <Route path='*' element={<Pagenotfount/>}></Route>
        </Routes>
        </BrowserRouter>

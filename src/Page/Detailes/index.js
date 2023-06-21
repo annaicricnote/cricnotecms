@@ -37,7 +37,7 @@ function Detailes() {
 
     useEffect(()=>{
         if(items !==""){            
-            setLink(`${window.location.origin}/news/${items?.id}`)
+            setLink(`http://cricnote.in//news/${items?.id}`)
         }
     },[items])
 

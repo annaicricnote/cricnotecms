@@ -49,6 +49,7 @@ function Footer() {
                                 <ul>
                                     <li><a href="/">About us</a></li>
                                     <li><a href="/contact">Contact Us</a></li>
+                                    <li><a href="/privacy">Privacy policy</a></li>
                                 </ul>
                             </div>
                         </div>

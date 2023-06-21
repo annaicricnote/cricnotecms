@@ -31,6 +31,7 @@ function Contactus (){
                                     <p>Register or record your street cricket score with our cricnote app. </p>
                                               
                                 </div>
+                              
                                 <div class="col-lg-7">
                                     <form class="form-wrapper">
                                         <input type="text" class="form-control" placeholder="Your name"/>
@@ -46,6 +47,8 @@ function Contactus (){
                     </div>
                 </div>
             </div>
+            {/* <h4 style={{marginLeft:'30px'}}><i class="fa fa-envelope-open"></i><span style={{color:"red"}}>Email:</span> info@cricnotye.com</h4>
+            <h4 style={{marginLeft:'30px'}}><i class="fa fa-twitter"></i><span style={{color:"red"}}>Twitter:</span> info@cricnotye.com</h4> */}
         </section>
     </>
   )

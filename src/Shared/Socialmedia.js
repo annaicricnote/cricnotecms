@@ -16,19 +16,20 @@ function Socialmedia({...props}) {
                 <FacebookShareButton
                     url={url}                
                     quote={quote}
+                    hashtags="#Cricnote"
                     imageUrl={imageUrl}
                     description={description}
                     className="Demo__some-network__share-button"
                 >
-                    <FacebookIcon size={32} round />
+                    <FacebookIcon size={32} round={true} />
                 </FacebookShareButton>
-                <br />
+                <br/>
                 <TwitterShareButton
                     title={title}
                     url={url}
                     hashtags={hashtags}
                 >
-                    <TwitterIcon size={32} round />
+                    <TwitterIcon size={32} round={true} />
 
                 </TwitterShareButton>
             </div>

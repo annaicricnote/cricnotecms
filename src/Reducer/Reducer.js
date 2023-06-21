@@ -39,7 +39,7 @@ export const { setCategories } = loginslice.actions
 
 export const getRecentNews = (details) => (dispatch) => {
 
-  axios.get(api.post)
+  axios.get(api.post+'page=1')
     .then(function (response) {
       // handle success  
       dispatch(setPost(response))
