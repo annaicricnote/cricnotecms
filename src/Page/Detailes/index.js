@@ -14,6 +14,8 @@ import { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { customdecodeURIComponent } from "../../Shared/helper";
 import  Socialmedia  from "../../Shared/Socialmedia";
+import ReactGA from 'react-ga4';
+import Skeletoninnernewspage from "../../Shared/skeletoninnernewspage";
 
 function Detailes() {
 
@@ -25,6 +27,7 @@ function Detailes() {
     const { id } = useParams();
     const [items, setItems] = useState(item)
     const [link, setLink] = useState(null)
+    const [flagupdate, setFlagupdate] = useState(0)
     useEffect(() => {
         if (postget && postget?.data?.length > 0 && (!item || item === undefined)) {
             const filterdata = postget?.data?.filter((datas, index) => {
@@ -37,14 +40,19 @@ function Detailes() {
 
     useEffect(()=>{
         if(items !==""){            
-            setLink(`http://cricnote.in//news/${items?.id}`)
+            setLink(`http://cricnote.in/news/${items?.id}`)
+        }
+        if(items !=="" && flagupdate === 0){            
+            setFlagupdate(1)
+            ReactGA.send({ hitType: "pageview", page: "/news/:id", title: "news page" })
         }
     },[items])
 
-   
-
     return (
         <>
+      
+          
+            <> 
             {items?.title?.rendered && link?
                 <Helmet>
                     <meta property="og:title" content={items?.title?.rendered} />
@@ -53,24 +61,28 @@ function Detailes() {
                     <meta property="og:type" content="article" />
                     <meta property="og:description" content={items?.content?.rendered} />
                     <meta property="og:locale" content="en_GB" />
-                    <meta name="description" content={items?.content?.rendered} />
-                    <meta name="description" content={items?.content?.rendered} />
-                </Helmet> : null}
-            <div id="wrapper">
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="theme-color" content="#000000" />
+                    <title>{items?.title?.rendered} | cricnote</title>
+                    <meta name="description" content={items?.title?.rendered} data-react-helmet="true"/>
+                </Helmet>:null}
+                <div id="wrapper">
                 <section class="section single-wrapper">
                     <div class="container">
+                     {/* <Skeletoninnernewspage/> */}
+                    {items?.title?.rendered && link?
                         <div class="row">
                             <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                                 <div class="page-wrapper">
                                     <div class="blog-title-area text-center">
                                         <ol class="breadcrumb hidden-xs-down">
                                             <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                            <li class="breadcrumb-item active">{items?.title?.rendered}</li>
+                                            <li class="breadcrumb-item active" dangerouslySetInnerHTML={{ __html:items?.title?.rendered}}/>
                                         </ol>
 
                                         <span class="color-orange"><a title="">Cricket</a></span>
 
-                                        <h3>{items?.title?.rendered}</h3>
+                                        <h3 dangerouslySetInnerHTML={{ __html:items?.title?.rendered}}/>
 
                                         <div class="blog-meta big-meta">
                                             <small><a title="">21 July, 2017</a></small>
@@ -166,7 +178,7 @@ function Detailes() {
                                     <Followus />
                                 </div>
                             </div>
-                        </div>
+                        </div>:  <Skeletoninnernewspage/>}
                     </div>
 
                 </section>
@@ -176,6 +188,8 @@ function Detailes() {
 
 
             </div>
+                 </> 
+         
         </>
     );
 }

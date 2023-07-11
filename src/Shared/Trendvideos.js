@@ -26,7 +26,7 @@ function Trendvideos() {
     <>
 
       <div className="widget">
-        <h2 className="widget-title">Trend Videos</h2>
+        {/* <h2 className="widget-title">Trend Videos</h2> */}
         <div className="trend-videos">
           {videoget?.data?.length > 0 && videoget.data.map((item, index) => {
             

@@ -15,6 +15,9 @@ import axios from 'axios';
 import { api } from "../../config/config"
 import { useEffect } from 'react';
 import "./index.css"
+import ReactGA from 'react-ga4';
+import Skeletonheaternews from '../../Shared/skeletonheaternews';
+import Skeletonnews from '../../Shared/skeletonnews';
 function Homepage() {
 
     const nav = useNavigate()
@@ -30,12 +33,17 @@ function Homepage() {
     }
 
     const [recentviews, setRecentviews] = useState(postget.data)
+  
     const [hasMore, setHasMore] = useState(true)
     const [pageNumber, setPageNumber] = useState(2)
 
     useEffect(() => {
         setRecentviews(postget.data)
     }, [postget])
+
+    useEffect(()=>{        
+        ReactGA.send({ hitType: "pageview", page: "/", title: "Home page" });
+    },[])
     
     const fechmoreviews = () => {       
         axios.get(api.post + `page=${pageNumber}`)
@@ -57,8 +65,8 @@ function Homepage() {
 
             <section className="section first-section">
                 <div className="container-fluid">
-                    <div className="masonry-blog clearfix">
-                        {headget && headget?.data?.map((item, index) => {
+                    <div className="masonry-blog clearfix">                   
+                        {headget?.data?.length > 0 ?  headget?.data?.map((item, index) => {
 
                             const classNames = index
                             return <div key={index} className={`_${index + 1}-slot`}>
@@ -70,13 +78,13 @@ function Homepage() {
                                                 <span className="bg-orange"><a href="#" title="" onClick={(e) => titleclick(item, e)}>{item.title.rendered}</a></span>
                                                 <h4><a href="#" title="" dangerouslySetInnerHTML={{ __html: item.content.rendered }}></a></h4>
                                                 <small><a href="#" title="">{item.modified}</a></small>
-                                                <small><a href="#" title="">by Suresh</a></small>
+                                                <small><a href="#" title="">by kali</a></small>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        })}
+                        }):<Skeletonheaternews/>}
                     </div>
                 </div>
             </section>
@@ -89,7 +97,7 @@ function Homepage() {
                                 <div className="blog-top clearfix">
                                     <h4 className="pull-left">Recent News <a href="#"><i className="fa fa-rss"></i></a></h4>
                                 </div>
-                                <div className="blog-list clearfix">
+                                <div className="blog-list clearfix">                              
                                     {recentviews?.length > 0 ?
                                         <InfiniteScroll dataLength={recentviews?.length} next={fechmoreviews} hasMore={hasMore}>
 
@@ -108,7 +116,7 @@ function Homepage() {
                                                         <div className="blog-meta big-meta col-md-8">
                                                             <h4><a onClick={(e) => titleclick(item, e)} href="#" title="" dangerouslySetInnerHTML={{ __html: item.title.rendered }} /></h4>
                                                             <div className="content-recent-news" dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
-                                                            <small className="firstsmall"><a className="bg-orange" href="tech-category-01.html" title="">cricket</a></small>
+                                                            <small className="firstsmall"><a className="bg-orange" href="" title="" >cricket</a></small>
                                                             <small><a onClick={(e) => titleclick(item, e)} href="#" title="">{item.modified}</a></small>
                                                             <small><a onClick={(e) => titleclick(item, e)} href="#" title="">by Suresh</a></small>
                                                         </div>
@@ -116,7 +124,7 @@ function Homepage() {
                                                 </div> <hr className="invis" /> </>
 
                                             })}
-                                        </InfiniteScroll> : null}
+                                        </InfiniteScroll> : <Skeletonnews/>}
 
                                 </div>
                             </div>
@@ -139,7 +147,7 @@ function Homepage() {
                             </div> */}
                         </div>
 
-                        <div className="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div className="add-banner-side col-lg-3 col-md-12 col-sm-12 col-xs-12">
                             <div className="sidebar">
                                 <div className="widget">
                                     <div className="banner-spot clearfix">
@@ -149,24 +157,24 @@ function Homepage() {
                                     </div>
                                 </div>
 
-                                {/* Trendvideos*/}
+                                {/* Trendvideos
                                 <Trendvideos />
                                 {/* Popularposts */}
-                                <Popularposts />
+                                {/* <Popularposts /> */}
 
                                 {/* Recentreviews */}
-                                <Recentreviews />
+                                {/* <Recentreviews /> */}
 
                                 {/* Followus */}
-                                <Followus />
+                                {/* <Followus />  */}
 
-                                <div className="widget">
+                                {/* <div className="widget">
                                     <div className="banner-spot clearfix">
                                         <div className="banner-img">
-                                            {/* <img src="upload/banner_03.jpg" alt="" /> */}
+                                             <img src="upload/banner_03.jpg" alt="" /> 
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

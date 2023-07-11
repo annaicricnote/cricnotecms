@@ -5,7 +5,7 @@ function Popularposts() {
  
   return (
     <>
-          <div className="widget">
+          {/* <div className="widget">
                                 <h2    className="widget-title">Popular Posts</h2>
                               <div className="blog-list-widget">
                                   <div className="list-group">
@@ -34,7 +34,7 @@ function Popularposts() {
                                         </a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
     </>
   );
 }

@@ -1,3 +1,3 @@
 export const customdecodeURIComponent = (link) =>{
-    return link.replaceAll(" ", "-");
+    return link.replaceAll("", "-");
 }

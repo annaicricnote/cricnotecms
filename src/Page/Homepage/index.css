@@ -3,3 +3,9 @@
   text-overflow: clip;
   height: 75px;
 }
+
+@media only screen and (max-width: 768px) {
+  .add-banner-side{
+    display: none;
+  }
+}

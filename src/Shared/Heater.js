@@ -118,7 +118,7 @@ function Heater() {
                                     <a className="nav-link" href="/videos">Videos</a>
                                 </li>     
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/contact">About Us</a>
+                                    <a className="nav-link" href="/about">About Us</a>
                                 </li>                         
                                 <li className="nav-item">
                                     <a className="nav-link" href="/contact">Contact Us</a>

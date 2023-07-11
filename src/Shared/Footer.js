@@ -17,7 +17,7 @@ function Footer() {
        <footer className="footer">
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-7">
+                    <div className="col-lg-7 not-required-mobile">
                         <div className="widget">
                             <div className="footer-text text-left">
                                 <a href="index.html">Cricnote</a>
@@ -57,8 +57,7 @@ function Footer() {
                 </div>
 
                 <div className="row">
-                    <div className="col-md-12 text-center">
-                        <br/>
+                    <div className="col-md-12 text-center">                   
                         <div className="copyright">&copy; cricnote </div>
                     </div>
                 </div>
